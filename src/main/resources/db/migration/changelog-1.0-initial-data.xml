@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <!-- Вставляем пользователей -->
+    <changeSet id="1" author="pr0maxx">
+        <insert tableName="users">
+            <column name="id" valueNumeric="1"/>
+            <column name="username" value="admin"/>
+            <column name="password" value="$2a$10$7Q1u5G9qMjVq1ILGykGfkuGbW9yH5/f1R0Qy4xzCDaXoR3M2rReGu"/> <!-- пароль "admin123" -->
+            <column name="email" value="admin@example.com"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="2"/>
+            <column name="username" value="user"/>
+            <column name="password" value="$2a$10$D9oHbF7KE3m1nYCMRzklOOh1Eg3nT9pN6x9eJHLCXzAOCjInZxq2S"/> <!-- пароль "user123" -->
+            <column name="email" value="user@example.com"/>
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+
+    <!-- Вставляем карты -->
+    <changeSet id="2" author="pr0maxx">
+        <!-- Карты для админа -->
+        <insert tableName="cards">
+            <column name="id" valueNumeric="1"/>
+            <column name="number" value="eyWy5h4CoT9Hl5tkXjpQvA=="/>
+            <column name="expiration_date" value="12/27"/>
+            <column name="balance" valueNumeric="10000.00"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="owner_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="cards">
+            <column name="id" valueNumeric="2"/>
+            <column name="number" value="dN3bsBjyjpkNN3RRyXWhcQ=="/>
+            <column name="expiration_date" value="11/26"/>
+            <column name="balance" valueNumeric="5000.00"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="owner_id" valueNumeric="1"/>
+        </insert>
+
+        <!-- Карты для обычного пользователя -->
+        <insert tableName="cards">
+            <column name="id" valueNumeric="3"/>
+            <column name="number" value="FbGkx6flJkA6Ocq7VG/o3g=="/>
+            <column name="expiration_date" value="10/25"/>
+            <column name="balance" valueNumeric="3000.00"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="owner_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="cards">
+            <column name="id" valueNumeric="4"/>
+            <column name="number" value="pYd8swZ88hQxv5A2NXBq0g=="/>
+            <column name="expiration_date" value="09/24"/>
+            <column name="balance" valueNumeric="1500.00"/>
+            <column name="status" value="BLOCKED"/>
+            <column name="owner_id" valueNumeric="2"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
